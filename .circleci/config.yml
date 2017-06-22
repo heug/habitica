@@ -13,12 +13,18 @@ jobs:
       # - restore_cache:
       #     key: dependency-cache-{{ checksum "package.json" }}
       - run:
+          name: debug
+          command: |
+            which npm
+            ls -al
+            ls -al node_modules
+      - run:
           name: install-npm
           command: npm install
-      # - save_cache:
-      #     key: dependency-cache-{{ checksum "package.json" }}
-      #     paths:
-      #       - ./node_modules
+      - save_cache:
+           key: dependency-cache-{{ checksum "package.json" }}-{{ epoch }}
+           paths:
+             - ./node_modules
       - run:
           name: test
           command: npm test
