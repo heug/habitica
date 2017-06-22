@@ -4,7 +4,7 @@ jobs:
     working_directory: ~/habitica
     docker:
       - image: circleci/node:6.11.0
-      - image: circleci/mongo:2.0.46
+      - image: circleci/mongo:3.0.14
     steps:
       - checkout
       - run:
