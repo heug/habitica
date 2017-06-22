@@ -7,9 +7,9 @@ jobs:
       - image: circleci/mongo:3.0.14
     steps:
       - checkout
-      - run:
-          name: update-npm
-          command: 'sudo npm install -g npm@4.0.2'
+      # - run:
+      #     name: update-npm
+      #     command: 'sudo npm install -g npm@4.0.2'
       # - restore_cache:
       #     key: dependency-cache-{{ checksum "package.json" }}
       - run:
@@ -17,7 +17,6 @@ jobs:
           command: |
             which npm
             ls -al
-            ls -al node_modules
       - run:
           name: install-npm
           command: npm install
