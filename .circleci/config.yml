@@ -7,23 +7,20 @@ jobs:
       - image: circleci/mongo:3.0.14
     steps:
       - checkout
-      # - run:
-      #     name: update-npm
-      #     command: 'sudo npm install -g npm@4.0.2'
       # - restore_cache:
       #     key: dependency-cache-{{ checksum "package.json" }}
-      - run:
-          name: debug
-          command: |
-            which npm
-            ls -al
+      # - run:
+      #     name: debug
+      #     command: |
+      #       which npm
+      #       ls -al
       - run:
           name: install-npm
           command: npm install
-      - save_cache:
-           key: dependency-cache-{{ checksum "package.json" }}-{{ epoch }}
-           paths:
-             - ./node_modules
+      # - save_cache:
+      #      key: dependency-cache-{{ checksum "package.json" }}-{{ epoch }}
+      #      paths:
+      #        - ./node_modules
       - run:
           name: test
           command: npm test
